@@ -1,1 +1,1 @@
-web: gunicorn doxcela.wsgi
+web: gunicorn rita_project.wsgi

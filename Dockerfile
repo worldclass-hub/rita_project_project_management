@@ -17,4 +17,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . .
 
-CMD bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn doxcela.wsgi:application --bind 0.0.0.0:$PORT"
+CMD bash -c "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn rita_project.wsgi:application --bind 0.0.0.0:$PORT"
