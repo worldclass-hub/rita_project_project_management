@@ -1,0 +1,94 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>GMMI</title>
+  <link rel="icon" href="{% static 'login-form/images/GMMI_LOGO.png' %}" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'login-form/css/style.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      body {
+        background-image: url("https://ncctazjcffmpuniwctkz.supabase.co/storage/v1/object/public/user-uploads//wallpaper2.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65); /* Darken bg */
+        z-index: 0;
+      }
+
+      .content-wrapper {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        position: relative;
+      }
+
+      .my-form {
+        position: relative;
+        width: 100%;
+        max-width: 360px;
+        z-index: 2;
+      }
+
+      .password-wrapper {
+        position: relative;
+      }
+
+      .password-wrapper .toggle-password {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+
+    <script src="{% static 'login-form/js/jquery.min.js' %}"></script>
+    <script src="{% static 'login-form/js/popper.js' %}"></script>
+    <script src="{% static 'login-form/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'login-form/js/main.js' %}"></script>
+
+    <script>
+      document.getElementById("togglePassword").addEventListener("click", function () {
+        var passwordField = document.getElementById("password");
+        var icon = this;
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          passwordField.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      });
+    </script>
+  </body>
+</html>
