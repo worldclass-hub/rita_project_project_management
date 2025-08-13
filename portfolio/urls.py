@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.welcome_view, name='welcome'),
     path('certificates/', views.all_certificates, name='all_certificates'),
     path('projects/', views.all_signature_projects, name='all_signature_projects'),
+    path("send-message/", views.send_message, name="send_message"),
 
 
     # path("login/", views.user_login, name="login"),
