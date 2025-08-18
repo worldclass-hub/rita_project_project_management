@@ -19,6 +19,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+
 @csrf_exempt
 def send_message(request):
     if request.method == "POST":
@@ -29,15 +30,41 @@ def send_message(request):
         if not name or not email or not message:
             return JsonResponse({"status": "error", "message": "All fields are required."})
 
-        # Send to Rita
+        # -----------------------------
+        # Send to Rita (plain text mail)
+        # -----------------------------
         subject = f"New message from {name}"
         body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-        send_mail(subject, body, email, ["samuelemenike4321@gmail.com"])
+        send_mail(subject, body, email, ["ritamarshallubah@gmail.com"])
 
-        # Send confirmation to sender
+        # -----------------------------
+        # Send confirmation to sender (HTML with WhatsApp emoji button)
+        # -----------------------------
+        whatsapp_link = "https://wa.me/2347065155030"  # +234 format
+
         confirm_subject = "Your message has been received"
-        confirm_body = f"Hello {name},\n\nThank you for reaching out to Rita Marshall. She has received your message and will respond shortly.\n\nBest regards,\nRita Marshall"
-        send_mail(confirm_subject, confirm_body, "samuelemenike4321@gmail.com", [email])
+        confirm_body = f"""
+        <p>Hello {name},</p>
+        <p>Thank you for reaching out to <b>Rita Marshall</b>. 
+        She has received your message and will respond shortly.</p>
+        <p>But you can also reach out quickly via WhatsApp:</p>
+        <a href="{whatsapp_link}" target="_blank" 
+           style="display:inline-flex;align-items:center;background-color:#25D366;
+                  color:white;font-weight:bold;padding:10px 15px;border-radius:30px;
+                  text-decoration:none;">
+            📱 Chat on WhatsApp
+        </a>
+        <p><br>Best regards,<br>Rita Marshall</p>
+        """
+
+        email_message = EmailMessage(
+            confirm_subject,
+            confirm_body,
+            "ritamarshallubah@gmail.com",  # from
+            [email],  # to
+        )
+        email_message.content_subtype = "html"  # mark content as HTML
+        email_message.send()
 
         return JsonResponse({"status": "success", "message": "Message sent successfully!"})
 
