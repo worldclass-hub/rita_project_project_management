@@ -250,12 +250,28 @@ JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
 
 
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'ritamarshallubah@gmail.com'         
+# EMAIL_HOST_PASSWORD = 'pvjj ggfo fwjv nhiz'    
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# ADMIN_EMAIL = 'ritamarshallubah@gmail.com'             
+
+
+
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ritamarshallubah@gmail.com'         
-EMAIL_HOST_PASSWORD = 'pvjj ggfo fwjv nhiz'    
+
+EMAIL_HOST_USER = 'samuelemenike4321@gmail.com'          # Replace with your Gmail
+EMAIL_HOST_PASSWORD = 'amqj nrug utnk zzcu'    # Use an App Password, not your main Gmail password
+
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-ADMIN_EMAIL = 'ritamarshallubah@gmail.com'             
+ADMIN_EMAIL = 'samuelemenike4321@gmail.com'              # Can be same or different from sender
+
 
